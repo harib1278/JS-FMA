@@ -8,11 +8,14 @@
    		table, td, th{
    			border:1px solid black;
    		}
+   		.submit-btn{
+   			margin-top:10px;
+   		}
    </style>
 </head>
 <body>
-	<div class="question-block">		
-		<h4>How old are you?</h4>
+	<div class="question-block">
+		<h3>Question 1:</h3>
 		<table id="question-1">
 			<thead>
 				<tr>
@@ -22,21 +25,21 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>How old are you?</td>
+					<td><b>How old are you?</b></td>
 					<td>
-						<form>
-							<input id="q1-radio-1" type="radio" value="0" name="radio"/> 1-25<br/>
-							<input id="q1-radio-2" type="radio" value="5" name="radio"/> 26-40<br/>
-							<input id="q1-radio-3" type="radio" value="8" name="radio"/> 41-60<br/>
-							<input id="q1-radio-4" type="radio" value="10" name="radio"/> 60+<br/>
+						<form id="q_1">
+							<input id="q1-radio-1" type="radio" value="0" name="radio" class="q1" checked/> 1-25<br/>
+							<input id="q1-radio-2" type="radio" value="5" name="radio" class="q1"/> 26-40<br/>
+							<input id="q1-radio-3" type="radio" value="8" name="radio" class="q1"/> 41-60<br/>
+							<input id="q1-radio-4" type="radio" value="10" name="radio" class="q1"/> 60+<br/>
 						</form>
 					</td>
 				</tr>
 				<tr>
-					<td>What is your BMI?</td>
+					<td><b>What is your BMI?</b></td>
 					<td>
 						<form>
-							<input id="q2-radio-1" type="radio" value="0" name="radio"/> 0-25<br/>
+							<input id="q2-radio-1" type="radio" value="0" name="radio" checked/> 0-25<br/>
 							<input id="q2-radio-2" type="radio" value="0" name="radio"/> 26-30<br/>
 							<input id="q2-radio-3" type="radio" value="9" name="radio"/> 31-35<br/>
 							<input id="q2-radio-4" type="radio" value="10" name="radio"/> 35+<br/>
@@ -44,10 +47,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Does anybody in your family have diabetes?</td>
+					<td><b>Does anybody in your family have diabetes?</b></td>
 					<td>
 						<form>
-							<input id="q3-radio-1" type="radio" value="0" name="radio"/> No.<br/>
+							<input id="q3-radio-1" type="radio" value="0" name="radio" checked/> No.<br/>
 							<input id="q3-radio-2" type="radio" value="7" name="radio"/> Grandparent<br/>
 							<input id="q3-radio-3" type="radio" value="15" name="radio"/> Sibling<br/>
 							<input id="q3-radio-4" type="radio" value="15" name="radio"/> Parent<br/>
@@ -55,10 +58,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td>How would you describe your diet?</td>
+					<td><b>How would you describe your diet?</b></td>
 					<td>
 						<form>
-							<input id="q4-radio-1" type="radio" value="0" name="radio"/> Low sugar<br/>
+							<input id="q4-radio-1" type="radio" value="0" name="radio" checked/> Low sugar<br/>
 							<input id="q4-radio-2" type="radio" value="0" name="radio"/> Normal sugar<br/>
 							<input id="q4-radio-3" type="radio" value="7" name="radio"/> Quite high sugar?<br/>
 							<input id="q4-radio-4" type="radio" value="10" name="radio"/> High sugar<br/>
@@ -69,12 +72,19 @@
 		</table>
 	</div>
 	<div class="submit-btn">
-		<button onclick="myFunction()"  value="submit" id="submit-q1">
-			Submit
+		<button onclick="q1init()"  value="submit" id="submit-q1">
+			Calculate
 		</button>
 	</div>
 </body>
 </html>
 <script>
-	console.log("adsa");
+	function q1init(){
+		
+		var q_1_1 = document.querySelector('input[name="radio"]:checked').value;
+		
+
+		console.log(q_1_1);
+
+	};
 </script>
