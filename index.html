@@ -11,48 +11,70 @@
    </style>
 </head>
 <body>
-	<div class="question-block">
-		<form>
-			<h4>How old are you?</h4>
-			<table id="question-1">
-				<thead>
-					<tr>
-						<th>Question</th>
-						<th>Answers</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>How old are you?</td>
-						<td>
-							<input id="q1-radio-1" type="radio" value="0" name="radio1"/> 1-25<br/>
-							<input id="q1-radio-2" type="radio" value="5" name="radio2"/> 26-40<br/>
-							<input id="q1-radio-3" type="radio" value="8" name="radio3"/> 41-60<br/>
-							<input id="q1-radio-4" type="radio" value="10" name="radio4"/> 60+<br/>
-						</td>
-					</tr>
-					<tr>
-						<td>What is your BMI?</td>
-						<td>
-							<input id="q2-radio-1" type="radio" value="0" name="radio1"/> 0-25<br/>
-							<input id="q2-radio-2" type="radio" value="0" name="radio2"/> 26-30<br/>
-							<input id="q2-radio-3" type="radio" value="9" name="radio3"/> 31-35<br/>
-							<input id="q2-radio-4" type="radio" value="10" name="radio4"/> 35+<br/>
-						</td>
-					</tr>
-					<tr>
-						<td>Does anybody in your family have diabetes?</td>
-						<td>
-							<input id="q3-radio-1" type="radio" value="0" name="radio1"/> No.<br/>
-							<input id="q3-radio-2" type="radio" value="7" name="radio2"/> Grandparent<br/>
-							<input id="q3-radio-3" type="radio" value="15" name="radio3"/> Sibling<br/>
-							<input id="q3-radio-4" type="radio" value="15" name="radio4"/> Parent<br/>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
-		</form>
+	<div class="question-block">		
+		<h4>How old are you?</h4>
+		<table id="question-1">
+			<thead>
+				<tr>
+					<th>Question</th>
+					<th>Answers</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>How old are you?</td>
+					<td>
+						<form>
+							<input id="q1-radio-1" type="radio" value="0" name="radio"/> 1-25<br/>
+							<input id="q1-radio-2" type="radio" value="5" name="radio"/> 26-40<br/>
+							<input id="q1-radio-3" type="radio" value="8" name="radio"/> 41-60<br/>
+							<input id="q1-radio-4" type="radio" value="10" name="radio"/> 60+<br/>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>What is your BMI?</td>
+					<td>
+						<form>
+							<input id="q2-radio-1" type="radio" value="0" name="radio"/> 0-25<br/>
+							<input id="q2-radio-2" type="radio" value="0" name="radio"/> 26-30<br/>
+							<input id="q2-radio-3" type="radio" value="9" name="radio"/> 31-35<br/>
+							<input id="q2-radio-4" type="radio" value="10" name="radio"/> 35+<br/>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>Does anybody in your family have diabetes?</td>
+					<td>
+						<form>
+							<input id="q3-radio-1" type="radio" value="0" name="radio"/> No.<br/>
+							<input id="q3-radio-2" type="radio" value="7" name="radio"/> Grandparent<br/>
+							<input id="q3-radio-3" type="radio" value="15" name="radio"/> Sibling<br/>
+							<input id="q3-radio-4" type="radio" value="15" name="radio"/> Parent<br/>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>How would you describe your diet?</td>
+					<td>
+						<form>
+							<input id="q4-radio-1" type="radio" value="0" name="radio"/> Low sugar<br/>
+							<input id="q4-radio-2" type="radio" value="0" name="radio"/> Normal sugar<br/>
+							<input id="q4-radio-3" type="radio" value="7" name="radio"/> Quite high sugar?<br/>
+							<input id="q4-radio-4" type="radio" value="10" name="radio"/> High sugar<br/>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="submit-btn">
+		<button onclick="myFunction()"  value="submit" id="submit-q1">
+			Submit
+		</button>
 	</div>
 </body>
 </html>
+<script>
+	console.log("adsa");
+</script>
