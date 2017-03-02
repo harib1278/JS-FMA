@@ -28,10 +28,10 @@
 					<td><b>How old are you?</b></td>
 					<td>
 						<form id="q_1">
-							<input id="q1-radio-1" type="radio" value="0" name="radio" class="q1" checked/> 1-25<br/>
-							<input id="q1-radio-2" type="radio" value="5" name="radio" class="q1"/> 26-40<br/>
-							<input id="q1-radio-3" type="radio" value="8" name="radio" class="q1"/> 41-60<br/>
-							<input id="q1-radio-4" type="radio" value="10" name="radio" class="q1"/> 60+<br/>
+							<input id="q1-radio-1" type="radio" value="0" name="radio_q0" class="q1" checked/> 1-25<br/>
+							<input id="q1-radio-2" type="radio" value="5" name="radio_q0" class="q1"/> 26-40<br/>
+							<input id="q1-radio-3" type="radio" value="8" name="radio_q0" class="q1"/> 41-60<br/>
+							<input id="q1-radio-4" type="radio" value="10" name="radio_q0" class="q1"/> 60+<br/>
 						</form>
 					</td>
 				</tr>
@@ -39,10 +39,10 @@
 					<td><b>What is your BMI?</b></td>
 					<td>
 						<form>
-							<input id="q2-radio-1" type="radio" value="0" name="radio" checked/> 0-25<br/>
-							<input id="q2-radio-2" type="radio" value="0" name="radio"/> 26-30<br/>
-							<input id="q2-radio-3" type="radio" value="9" name="radio"/> 31-35<br/>
-							<input id="q2-radio-4" type="radio" value="10" name="radio"/> 35+<br/>
+							<input id="q2-radio-1" type="radio" value="0" name="radio_q1" checked/> 0-25<br/>
+							<input id="q2-radio-2" type="radio" value="0" name="radio_q1"/> 26-30<br/>
+							<input id="q2-radio-3" type="radio" value="9" name="radio_q1"/> 31-35<br/>
+							<input id="q2-radio-4" type="radio" value="10" name="radio_q1"/> 35+<br/>
 						</form>
 					</td>
 				</tr>
@@ -50,10 +50,10 @@
 					<td><b>Does anybody in your family have diabetes?</b></td>
 					<td>
 						<form>
-							<input id="q3-radio-1" type="radio" value="0" name="radio" checked/> No.<br/>
-							<input id="q3-radio-2" type="radio" value="7" name="radio"/> Grandparent<br/>
-							<input id="q3-radio-3" type="radio" value="15" name="radio"/> Sibling<br/>
-							<input id="q3-radio-4" type="radio" value="15" name="radio"/> Parent<br/>
+							<input id="q3-radio-1" type="radio" value="0" name="radio_q2" checked/> No.<br/>
+							<input id="q3-radio-2" type="radio" value="7" name="radio_q2"/> Grandparent<br/>
+							<input id="q3-radio-3" type="radio" value="15" name="radio_q2"/> Sibling<br/>
+							<input id="q3-radio-4" type="radio" value="15" name="radio_q2"/> Parent<br/>
 						</form>
 					</td>
 				</tr>
@@ -61,10 +61,10 @@
 					<td><b>How would you describe your diet?</b></td>
 					<td>
 						<form>
-							<input id="q4-radio-1" type="radio" value="0" name="radio" checked/> Low sugar<br/>
-							<input id="q4-radio-2" type="radio" value="0" name="radio"/> Normal sugar<br/>
-							<input id="q4-radio-3" type="radio" value="7" name="radio"/> Quite high sugar?<br/>
-							<input id="q4-radio-4" type="radio" value="10" name="radio"/> High sugar<br/>
+							<input id="q4-radio-1" type="radio" value="0" name="radio_q3" checked/> Low sugar<br/>
+							<input id="q4-radio-2" type="radio" value="0" name="radio_q3"/> Normal sugar<br/>
+							<input id="q4-radio-3" type="radio" value="7" name="radio_q3"/> Quite high sugar?<br/>
+							<input id="q4-radio-4" type="radio" value="10" name="radio_q3"/> High sugar<br/>
 						</form>
 					</td>
 				</tr>
@@ -72,19 +72,66 @@
 		</table>
 	</div>
 	<div class="submit-btn">
-		<button onclick="q1init()"  value="submit" id="submit-q1">
+		<button onclick="init()"  value="submit" id="submit-q1">
 			Calculate
 		</button>
+	</div>
+
+	<div class="final-summary">
+		<h3>Thanks for taking the test, your result is:</h3>
+		<p id="results-summary"></p>
+		</div>
 	</div>
 </body>
 </html>
 <script>
-	function q1init(){
+	function init(){
+
+		var total = generateTotals();
 		
-		var q_1_1 = document.querySelector('input[name="radio"]:checked').value;
 		
 
-		console.log(q_1_1);
+		console.log(total);
+
+		if(total > 0 && total <= 15){
+			var resultMessage = "<p></p>";
+			generateResults(resultMessage);
+		} else if(total > 15 && total <= 25){
+			var resultMessage = "<p></p>";
+			generateResults(resultMessage);
+		} else if(total > 25){
+			var resultMessage = "<p></p>";
+			generateResults(resultMessage);
+		} else {
+			//catch all error
+			var resultMessage = "<p>Error with calculation, please take the test again.</p>";
+		}
 
 	};
+
+	function generateTotals(){
+		var q_1_0 = parseInt(document.querySelector('input[name="radio_q0"]:checked').value);
+
+		var q_1_1 = parseInt(document.querySelector('input[name="radio_q1"]:checked').value);
+
+		var q_1_2 = parseInt(document.querySelector('input[name="radio_q2"]:checked').value);
+
+		var q_1_3 = parseInt(document.querySelector('input[name="radio_q3"]:checked').value);
+
+		
+		return q_1_0 + q_1_1 + q_1_2 + q_1_3;
+	}
+
+	function generateResults(resultMessage){
+		//var message  = '<p>'+ resultMessage +'</p>';
+		var node 	 = document.createElement("<p>");                
+		var textnode = document.createTextNode(resultMessage);
+		// Create a text node
+		node.appendChild(textnode);                              
+		// Append the text
+		document.getElementById("results-summary").appendChild(node);
+
+	}
+
+
 </script>
