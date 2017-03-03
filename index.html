@@ -78,60 +78,8 @@
 	</div>
 
 	<div class="final-summary">
-		<h3>Thanks for taking the test, your result is:</h3>
-		<p id="results-summary"></p>
+		<div id="results-summary"></p>
 		</div>
 	</div>
 </body>
 </html>
-<script>
-	function init(){
-
-		var total = generateTotals();
-		
-		
-
-		console.log(total);
-
-		if(total > 0 && total <= 15){
-			var resultMessage = "<p></p>";
-			generateResults(resultMessage);
-		} else if(total > 15 && total <= 25){
-			var resultMessage = "<p></p>";
-			generateResults(resultMessage);
-		} else if(total > 25){
-			var resultMessage = "<p></p>";
-			generateResults(resultMessage);
-		} else {
-			//catch all error
-			var resultMessage = "<p>Error with calculation, please take the test again.</p>";
-		}
-
-	};
-
-	function generateTotals(){
-		var q_1_0 = parseInt(document.querySelector('input[name="radio_q0"]:checked').value);
-
-		var q_1_1 = parseInt(document.querySelector('input[name="radio_q1"]:checked').value);
-
-		var q_1_2 = parseInt(document.querySelector('input[name="radio_q2"]:checked').value);
-
-		var q_1_3 = parseInt(document.querySelector('input[name="radio_q3"]:checked').value);
-
-		
-		return q_1_0 + q_1_1 + q_1_2 + q_1_3;
-	}
-
-	function generateResults(resultMessage){
-		//var message  = '<p>'+ resultMessage +'</p>';
-		var node 	 = document.createElement("<p>");                
-		var textnode = document.createTextNode(resultMessage);
-		// Create a text node
-		node.appendChild(textnode);                              
-		// Append the text
-		document.getElementById("results-summary").appendChild(node);
-
-	}
-
-
-</script>
