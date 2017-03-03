@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>DCSIS Javascript FMA Project</title>
+   <script src="script.js"></script>
+   <style>
+   		table, td, th{
+   			border:1px solid black;
+   		}
+   		.submit-btn{
+   			margin-top:10px;
+   		}
+   		.form-block > form > input, select{
+   			margin-top:10px;
+   			margin-bottom:10px;
+   		}
+   		p.results{
+   			color:red;
+
+   		}
+   </style>
+</head>
+<body>
+	<div class="form-block">
+		<form name="validate-form" onsubmit="return validateForm()" method="post">
+			<label for="first-name">First Name:</label><br/>
+			<input type="text" name="firstname" id="first-name"><br/>
+			<p id="res1"></p>
+			<label for="last-name">Last Name:</label><br/>
+			<input type="text" name="lastname" id="last-name"><br/>
+			<label for="title">Title:</label><br/>
+			<select id="title">
+			  <option value="Mr">Mr</option>
+			  <option value="Ms">Ms</option>
+			  <option value="Miss">Miss</option>
+			  <option value="Mrs">Mrs</option>
+			  <option value="Master">Master</option>
+			</select><br/>
+			<label for="han">Health Authority Number:</label><br/>
+			<input type="text" name="han" id="han"><br/>
+			<label for="email">Email:</label><br/>
+			<input type="text" name="email" id="email"><br/>
+			<label for="telephone">Telephone:</label><br/>
+			<input type="text" name="telephone" id="telephone"><br/>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</body>
+</html>
+
+<script>
+	function validateForm(){
+
+		// validate the first name
+		var x = document.forms["validate-form"]["first-name"].value;
+	    if (x == "") {
+	        var msg = "First Name must be filled out";
+	        generateResults(msg, 'res1');
+	        return false;
+	    }
+
+	    //use a regular expression to validate if alpha characters
+	    var thisRegex = new RegExp('^[a-zA-Z]*$');
+
+		if(!thisRegex.test(x)){
+		    var msg = "Only alpha characters allowed for first name";
+	        generateResults(msg, 'res1');
+	        return false;
+		}
+
+		// validate the second name
+		var x = document.forms["validate-form"]["last-name"].value;
+	    if (x == "") {
+	        var msg = "Last Name must be filled out";
+	        generateResults(msg, 'res1');
+	        return false;
+	    }
+
+	    //use a regular expression to validate if alpha characters
+	    var thisRegex = new RegExp('^[a-zA-Z]*$');
+
+		if(!thisRegex.test(x)){
+		    var msg = "Only alpha characters allowed for last name";
+	        generateResults(msg, 'res1');
+	        return false;
+		}
+
+	    
+	   
+	}
+
+	function generateResults(resultMessage, container){
+
+		var paras = document.getElementsByClassName('results');
+
+		//if there are old results on the page then remove them
+		while(paras[0]){
+		    paras[0].parentNode.removeChild(paras[0]);
+		}
+
+		//create the results element and give it class name of 'results'
+		var m = document.createElement("p");
+		m.className = "results";
+		var t = document.createTextNode(resultMessage);
+
+		m.appendChild(t);
+
+		//print the new results by the text container with ther validation error
+		document.getElementById(container).appendChild(m); 
+	}
+</script>
