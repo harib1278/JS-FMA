@@ -29,6 +29,7 @@
 			<p id="res1"></p>
 			<label for="last-name">Last Name:</label><br/>
 			<input type="text" name="lastname" id="last-name"><br/>
+			<p id="res2"></p>
 			<label for="title">Title:</label><br/>
 			<select id="title">
 			  <option value="Mr">Mr</option>
@@ -73,7 +74,7 @@
 		var x = document.forms["validate-form"]["last-name"].value;
 	    if (x == "") {
 	        var msg = "Last Name must be filled out";
-	        generateResults(msg, 'res1');
+	        generateResults(msg, 'res2');
 	        return false;
 	    }
 
@@ -82,7 +83,7 @@
 
 		if(!thisRegex.test(x)){
 		    var msg = "Only alpha characters allowed for last name";
-	        generateResults(msg, 'res1');
+	        generateResults(msg, 'res2');
 	        return false;
 		}
 
