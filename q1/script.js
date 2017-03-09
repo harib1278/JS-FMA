@@ -60,7 +60,7 @@ function init(){
 
 		n.appendChild(t);
 
-		m.append(n);
+		m.append(n); 
 
 		generateResults(m);
 	} else {

@@ -13,7 +13,6 @@
    		}
    		.form-block > form > input, select{
    			margin-top:10px;
-   			margin-bottom:10px;
    		}
    		p.results{
    			color:red;
@@ -38,12 +37,16 @@
 			  <option value="Mrs">Mrs</option>
 			  <option value="Master">Master</option>
 			</select><br/>
+			<p></p> <!-- Just for padding -->
 			<label for="han">Health Authority Number:</label><br/>
 			<input type="text" name="han" id="han"><br/>
+			<p id="res3"></p>
 			<label for="email">Email:</label><br/>
 			<input type="text" name="email" id="email"><br/>
+			<p id="res4"></p>
 			<label for="telephone">Telephone:</label><br/>
 			<input type="text" name="telephone" id="telephone"><br/>
+			<p id="res5"></p>
 			<input type="submit" value="Submit">
 		</form>
 	</div>
@@ -53,41 +56,61 @@
 <script>
 	function validateForm(){
 
+		//use a regular expression to validate if alpha characters
+	    var alphaRegex = new RegExp('^[a-zA-Z]*$');
+
 		// validate the first name
 		var x = document.forms["validate-form"]["first-name"].value;
 	    if (x == "") {
-	        var msg = "First Name must be filled out";
+	        var msg = "First Name is a required field and must be filled out";
 	        generateResults(msg, 'res1');
 	        return false;
-	    }
+	    }    
 
-	    //use a regular expression to validate if alpha characters
-	    var thisRegex = new RegExp('^[a-zA-Z]*$');
-
-		if(!thisRegex.test(x)){
+		if(!alphaRegex.test(x)){
 		    var msg = "Only alpha characters allowed for first name";
 	        generateResults(msg, 'res1');
 	        return false;
 		}
 
-		// validate the second name
+
+
+		// validate the last name
 		var x = document.forms["validate-form"]["last-name"].value;
 	    if (x == "") {
-	        var msg = "Last Name must be filled out";
+	        var msg = "Last Name is a required field and must be filled out";
 	        generateResults(msg, 'res2');
 	        return false;
 	    }
 
-	    //use a regular expression to validate if alpha characters
-	    var thisRegex = new RegExp('^[a-zA-Z]*$');
-
-		if(!thisRegex.test(x)){
+		if(!alphaRegex.test(x)){
 		    var msg = "Only alpha characters allowed for last name";
 	        generateResults(msg, 'res2');
 	        return false;
 		}
 
-	    
+		
+		//regex that will only allow for health authority numbers matching: ZHA346783 (ZHA prepended to a 6 digit number)
+		var healthNumberRegex = new RegExp('^(ZHA)[0-9]{6}$');
+
+		// validate the health authority number
+		var x = document.forms["validate-form"]["han"].value;
+
+		if (x == "") {
+	        var msg = "Health Authority Number is a required field and must be filled out";
+	        generateResults(msg, 'res3');
+	        return false;
+	    }
+
+	    if(!healthNumberRegex.test(x)){
+		    var msg = "Only alpha characters allowed for last name";
+	        generateResults(msg, 'res2');
+	        return false;
+		}
+
+
+
+	    return false;
 	   
 	}
 
