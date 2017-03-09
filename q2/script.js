@@ -1,100 +1,137 @@
-function init(){
+function validateForm(){
 
-	var total = generateTotals();
+		//use a regular expression to validate if alpha characters
+	    var alphaRegex = new RegExp('^[a-zA-Z]*$');
 
-	if(total >= 0 && total <= 15){
+		// validate the first name
+		var x = document.forms["validate-form"]["first-name"].value;
 
-		var m = document.createElement("p");
-		m.className = "results";
-		var t = document.createTextNode("Low Risk: ");
-
-		m.appendChild(t);
-		var msg = document.createTextNode("Your results show that you currently have a low risk of developing diabetes. However, it is important that you maintain a healthy lifestyle in terms of diet and exercise.");
-
-		m.append(msg);
-		var resultMessage = '';
-
-		generateResults(m);
-	} else if(total > 15 && total <= 25){
-
-
-		var m = document.createElement("p");
-		m.className = "results";
-		var t = document.createTextNode("Medium Risk: ");
-
-		m.appendChild(t);
-		var msg = document.createTextNode("Your results show that you currently have a medium risk of developing diabetes. For more information on your risk factors, and what to do about them, please visit our diabetes advice website at ");
-
-		m.append(msg);
+	    if (x == "") {
+	        var msg = "First Name is a required field and must be filled out";
+	        generateResults(msg, 'res1');
+	        return false;
+	    } else if(!alphaRegex.test(x)){
+		    var msg = "Only alpha characters allowed for first name";
+	        generateResults(msg, 'res1');
+	        return false;
+		} else {
+			stripErrors();
+		}
 
 
-		var a = document.createElement('a');
-		var linkText = document.createTextNode("zha.org.zd");
-		a.appendChild(linkText);
-		a.title = "ZHA Website";
-		a.href  = "http://www.zha.org.zd/";
 
-		m.append(a);
+		// validate the last name
+		var x = document.forms["validate-form"]["last-name"].value;
 
-		
-		generateResults(m);
-	} else if(total > 25){
-		var m = document.createElement("p");
-		m.className = "results";
-		var t = document.createTextNode("High Risk: ");
+	    if (x == "") {
+	        var msg = "Last Name is a required field and must be filled out";
+	        generateResults(msg, 'res2');
+	        return false;
+	    }else if(!alphaRegex.test(x)){
+		    var msg = "Only alpha characters allowed for last name";
+	        generateResults(msg, 'res2');
+	        return false;
+		} else {
+			stripErrors();
+		}
 
-		m.appendChild(t);
-		var msg = document.createTextNode("Your results show that you currently have a HIGH risk of developing diabetes. ");
 
-		m.append(msg);
+		//regex that will only allow for health authority numbers matching: ZHA346783 (ZHA prepended to a 6 digit number)
+		var healthNumberRegex = new RegExp('^(ZHA)[0-9]{6}$');
 
-		var a = document.createElement('i');
-		var linkText = document.createTextNode("[Your main risk factors are your BMI and your diet.]");
-		a.appendChild(linkText);
+		// validate the health authority number
+		var x = document.forms["validate-form"]["han"].value;
 
-		m.append(a);
+		if (x == "") {
+	        var msg = "Health Authority Number is a required field and must be filled out";
+	        generateResults(msg, 'res3');
+	        return false;
+	    }else if(!healthNumberRegex.test(x)){
+		    var msg = "Must match this format: ZHA346783";
+	        generateResults(msg, 'res3');
+	        return false;
+		} else {
+			stripErrors();
+		}
 
-		var n = document.createElement("p");
-		n.className = "results";
-		var t = document.createTextNode(" We advise that you contact the Health Authority to discuss your risk factors as soon as you can. Please fill in our contact form and a member of the Health Authority Diabetes Team will be in contact with you.");
 
-		n.appendChild(t);
+		//validate the email address format
+		//note I have not used the HTML attribute type of 'email' but opted to use just native javascript
+		//please note that this regex has been taken from http://emailregex.com/ and is extremely well tested with a huge range of email address formats
 
-		m.append(n);
+		var emailRegex = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$');
 
-		generateResults(m);
-	} else {
-		//catch all error
-		var resultMessage = 'Error: Please retake the test again, error calculating your results.';
+		var x = document.forms["validate-form"]["email"].value;
+
+		if (x == "") {
+	        var msg = "Email address is a required field and must be filled out";
+	        generateResults(msg, 'res4');
+	        return false;
+	    } else if(!emailRegex.test(x)){
+		    var msg = "A valid email format must be submitted.";
+	        generateResults(msg, 'res4');
+	        return false;
+		} else{
+			stripErrors();
+		}
+
+
+		//validate the telephone number
+		var numericalRegex = new RegExp('^[0-9]{11}$');
+
+		var x = document.forms["validate-form"]["telephone"].value;
+		if (x == "") {
+	        var msg = "Telephone Number is a required field and must be filled out";
+	        generateResults(msg, 'res5');
+	        return false;
+	    } else if(!numericalRegex.test(x)){
+		    var msg = "Only 11 digit numbers can be submitted";
+	        generateResults(msg, 'res5');
+	        return false;
+		} else {
+			stripErrors();
+		}
+
+
+	    return false;
+	   
 	}
 
-};
+	function stripErrors(){
+		var paras = document.getElementsByClassName('results');
 
-function generateTotals(){
-	var q_1_0 = parseInt(document.querySelector('input[name="radio_q0"]:checked').value);
-
-	var q_1_1 = parseInt(document.querySelector('input[name="radio_q1"]:checked').value);
-
-	var q_1_2 = parseInt(document.querySelector('input[name="radio_q2"]:checked').value);
-
-	var q_1_3 = parseInt(document.querySelector('input[name="radio_q3"]:checked').value);
-
-	
-	return q_1_0 + q_1_1 + q_1_2 + q_1_3;
-}
-
-function generateResults(resultMessage){
-	
-
-	var paras = document.getElementsByClassName('results');
-
-	//if there are old results on the page then remove them
-	while(paras[0]){
-	    paras[0].parentNode.removeChild(paras[0]);
+		//if there are old results on the page then remove them
+		while(paras[0]){
+		    paras[0].parentNode.removeChild(paras[0]);
+		}
 	}
 
-	//print the new results
-	document.getElementById("results-summary").appendChild(resultMessage); 
-	
+	function generateResults(resultMessage, container){
 
-}
+		stripErrors();		
+
+		//create the results element and give it class name of 'results'
+		var m = document.createElement("p");
+		m.className = "results";
+		var t = document.createTextNode(resultMessage);
+
+		m.appendChild(t);
+
+		//print the new results by the text container with ther validation error
+		document.getElementById(container).appendChild(m); 
+	}
+
+	/*
+	*	Focus on the firstname field when user loads the page.
+	*/
+	function focusField(){
+		window.onload = function() {
+		  document.getElementById("first-name").focus();
+		};
+	}
+
+	function init(){
+		focusField();
+	}
+
+	init();
