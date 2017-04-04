@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>DCSIS Javascript FMA Project</title>
+   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+   <script src="script.js"></script>
+
+   <style>
+   		table, td, th{
+   			border:1px solid black;
+   		}
+   		.submit-btn{
+   			margin-top:10px;
+   		}
+   		.form-block > form > input, select{
+   			margin-top:10px;
+   		}
+   		p.results{
+   			color:red;
+
+   		}
+		/* Tooltip container */
+		.tooltip {
+		    position: relative;
+		    display: inline-block;
+		    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+		}
+
+		/* Tooltip text */
+		.tooltip .tooltiptext {
+		    visibility: hidden;
+		    width: 120px;
+		    background-color: black;
+		    color: #fff;
+		    text-align: center;
+		    padding: 5px 0;
+		    border-radius: 6px;
+		 
+		    /* Position the tooltip text - see examples below! */
+		    position: absolute;
+		    z-index: 1;
+		}
+
+		/* Show the tooltip text when you mouse over the tooltip container */
+		.tooltip:hover .tooltiptext {
+		    visibility: visible;
+		}
+
+		/* make error text red */
+		.error {
+			color: #FF0000;
+		}
+
+   </style>
+</head>
+<body>
+	<div class="form-block">
+		<form class="cmxform" id="validate" method="get" action="">
+			<fieldset>
+				<p>
+				  <label for="first-name">First Name:</label><br/>
+				  <input id="fname" name="fname" id="first-name" pattern="^[a-zA-Z]*$" type="text" minlength="1" placeholder="" required>
+				</p>
+				<p>
+				  <label for="last-name">Last Name:</label><br/>
+				  <input id="lname" name="lname" id="last-name" type="text" pattern="^[a-zA-Z]*$" minlength="1" placeholder="" required>
+				</p>
+				<p>
+					<label for="title">Title:</label><br/>
+					<select id="title" required>
+					  <option value="Mr">Mr</option>
+					  <option value="Ms">Ms</option>
+					  <option value="Miss">Miss</option>
+					  <option value="Mrs">Mrs</option>
+					  <option value="Master">Master</option>
+					</select>
+				</p>
+				<p>	
+					<div class="tooltip">?
+					  <span class="tooltiptext">If you do not know your HAN then please contact your GP.</span>
+					</div>
+					<label for="han">Health Authority Number:</label>					
+					<br/>
+
+					<input type="text" name="han" id="han" pattern="^(ZHA)[0-9]{6}$" placeholder="e.g ZHA346783" required/>
+				</p>
+				<p>
+				  <label for="cemail">E-Mail:</label><br/>
+				  <input id="cemail" type="email" name="email" placeholder="someone@example.com" required>
+				</p>
+				<p>
+				  <label for="telno">Telephone Number:</label><br/>
+				  <input id="telno" type="number" pattern="^[0-9]{11}$" name="number" placeholder="020 8989 9398" required>
+				</p>
+				
+				<p>
+				  <input class="submit" type="submit" value="Submit">
+				</p>
+			</fieldset>
+		</form>
+	</div>
+
+<script>
+$("#validate").validate();
+</script>
+
+
+</body>
+</html>
+
+<script>
+	
+</script>
