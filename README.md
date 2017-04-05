@@ -1,1 +1,1 @@
-# JS-FMA
+# JS-FMA - Thomas Shaddock
