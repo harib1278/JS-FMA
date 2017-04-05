@@ -56,11 +56,26 @@ function init(){
 
 		var n = document.createElement("p");
 		n.className = "results";
-		var t = document.createTextNode(" We advise that you contact the Health Authority to discuss your risk factors as soon as you can. Please fill in our contact form and a member of the Health Authority Diabetes Team will be in contact with you.");
+		var t = document.createTextNode(" We advise that you contact the Health Authority to discuss your risk factors as soon as you can. Please fill in our ");
 
+		//
 		n.appendChild(t);
 
-		m.append(n); 
+		m.append(n);
+
+		var a = document.createElement('a');
+		var linkText = document.createTextNode("contact form");
+		a.appendChild(linkText);
+		a.title = "Contact Form";
+		a.href  = "../q2/index.html";
+		a.target  = "__blank";
+
+		n.append(a);
+
+		m.append(n);
+
+		var t = document.createTextNode(" and a member of the Health Authority Diabetes Team will be in contact with you.");
+		n.appendChild(t);
 
 		generateResults(m);
 	} else {
