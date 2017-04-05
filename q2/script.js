@@ -1,3 +1,7 @@
+/**
+*	Primary driver of the functionalty in this question, is invoked when a user clicks on submit.
+*/
+
 function validateForm(){
 
 		//use a regular expression to validate if alpha characters
@@ -97,6 +101,10 @@ function validateForm(){
 	   
 }
 
+/**
+*	Function takes care of removing the validation error messages in the correct manner
+*/
+
 function stripErrors(){
 	var paras = document.getElementsByClassName('results');
 
@@ -106,6 +114,10 @@ function stripErrors(){
 	}
 }
 
+/**
+*	@param resultMessage: the text of the result message you wish to display in string format
+*	@param container: is the DOM markup element where you want to display errors next to
+*/
 function generateResults(resultMessage, container){
 
 	stripErrors();		
