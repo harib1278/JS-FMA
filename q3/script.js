@@ -12,6 +12,7 @@ function init(){
 }
 
 function formValidate(){
-	$("#contact-validate").validate();
+	$("#validate").validate();
 }
 
+init();

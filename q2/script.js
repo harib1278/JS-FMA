@@ -95,43 +95,43 @@ function validateForm(){
 
 	    return false;
 	   
+}
+
+function stripErrors(){
+	var paras = document.getElementsByClassName('results');
+
+	//if there are old results on the page then remove them
+	while(paras[0]){
+	    paras[0].parentNode.removeChild(paras[0]);
 	}
+}
 
-	function stripErrors(){
-		var paras = document.getElementsByClassName('results');
+function generateResults(resultMessage, container){
 
-		//if there are old results on the page then remove them
-		while(paras[0]){
-		    paras[0].parentNode.removeChild(paras[0]);
-		}
-	}
+	stripErrors();		
 
-	function generateResults(resultMessage, container){
+	//create the results element and give it class name of 'results'
+	var m = document.createElement("p");
+	m.className = "results";
+	var t = document.createTextNode(resultMessage);
 
-		stripErrors();		
+	m.appendChild(t);
 
-		//create the results element and give it class name of 'results'
-		var m = document.createElement("p");
-		m.className = "results";
-		var t = document.createTextNode(resultMessage);
+	//print the new results by the text container with ther validation error
+	document.getElementById(container).appendChild(m); 
+}
 
-		m.appendChild(t);
+/*
+*	Focus on the firstname field when user loads the page.
+*/
+function focusField(){
+	window.onload = function() {
+	  document.getElementById("first-name").focus();
+	};
+}
 
-		//print the new results by the text container with ther validation error
-		document.getElementById(container).appendChild(m); 
-	}
+function init(){
+	focusField();
+}
 
-	/*
-	*	Focus on the firstname field when user loads the page.
-	*/
-	function focusField(){
-		window.onload = function() {
-		  document.getElementById("first-name").focus();
-		};
-	}
-
-	function init(){
-		focusField();
-	}
-
-	init();
+init();
