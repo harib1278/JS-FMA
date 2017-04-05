@@ -8,39 +8,41 @@
 </head>
 <body>
 	<div class="form-block">
-		<form name="validate-form" onsubmit="return validateForm()" method="post">
-			<label for="first-name">First Name:</label><br/>
-			<input type="text" name="firstname" id="first-name" placeholder="Please enter first name"><br/> <!-- Place holder attribute used so that the default message is wiped on user focus-->
-			<p id="res1"></p>
-			<label for="last-name">Last Name:</label><br/>
-			<input type="text" name="lastname" id="last-name" placeholder="Please enter last name"><br/>
-			<p id="res2"></p>
-			<label for="title">Title:</label><br/>
-			<select id="title">
-			  <option value="Mr">Mr</option>
-			  <option value="Ms">Ms</option>
-			  <option value="Miss">Miss</option>
-			  <option value="Mrs">Mrs</option>
-			  <option value="Master">Master</option>
-			</select><br/>
-			<p></p> <!-- Just for padding -->
+		<fieldset>
+			<form name="validate-form" onsubmit="return validateForm()" method="post">
+				<label for="first-name">First Name:</label><br/>
+				<input type="text" name="firstname" id="first-name" placeholder="Please enter first name"><br/> <!-- Place holder attribute used so that the default message is wiped on user focus-->
+				<p id="res1"></p>
+				<label for="last-name">Last Name:</label><br/>
+				<input type="text" name="lastname" id="last-name" placeholder="Please enter last name"><br/>
+				<p id="res2"></p>
+				<label for="title">Title:</label><br/>
+				<select id="title">
+				  <option value="Mr">Mr</option>
+				  <option value="Ms">Ms</option>
+				  <option value="Miss">Miss</option>
+				  <option value="Mrs">Mrs</option>
+				  <option value="Master">Master</option>
+				</select><br/>
+				<p></p> <!-- Just for padding -->
 
-			<label for="han">Health Authority Number:</label>
-			<div class="tooltip">?
-			  <span class="tooltiptext">If you do not know your HAN then please contact your GP.</span>
-			</div>
-			<br/>
+				<label for="han">Health Authority Number:</label>
+				<div class="tooltip">?
+				  <span class="tooltiptext">If you do not know your HAN then please contact your GP.</span>
+				</div>
+				<br/>
 
-			<input type="text" name="han" id="han" placeholder="e.g ZHA346783"><br/>
-			<p id="res3"></p>
-			<label for="email">Email:</label><br/>
-			<input type="text" name="email" id="email" placeholder="yourname@email.com"><br/>
-			<p id="res4"></p>
-			<label for="telephone">Telephone:</label><br/>
-			<input type="text" name="telephone" id="telephone" placeholder="02038495839"><br/>
-			<p id="res5"></p>
-			<input type="submit" value="Submit">
-		</form>
+				<input type="text" name="han" id="han" placeholder="e.g ZHA346783"><br/>
+				<p id="res3"></p>
+				<label for="email">Email:</label><br/>
+				<input type="text" name="email" id="email" placeholder="yourname@email.com"><br/>
+				<p id="res4"></p>
+				<label for="telephone">Telephone:</label><br/>
+				<input type="text" name="telephone" id="telephone" placeholder="02038495839"><br/>
+				<p id="res5"></p>
+				<input type="submit" value="Submit">
+			</form>
+		</fieldset>
 	</div>
 </body>
 </html>
