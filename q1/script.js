@@ -1,7 +1,21 @@
+/**
+*	Function to initalise the main script, will invoke the calculation of the totals as well as the functionality to display the appropriate results message
+*/
+
 function init(){
 
 	var total = generateTotals();
 
+	generateResultsMessage(total);	
+
+};
+
+/**
+*	Function is responsible for the generation of the markup of the results messages based on the calculated total
+*	@param total: the total value of the summed checkbox values as an integer
+*/
+
+function generateResultsMessage(total){
 	if(total >= 0 && total <= 15){
 
 		var m = document.createElement("p");
@@ -58,7 +72,6 @@ function init(){
 		n.className = "results";
 		var t = document.createTextNode(" We advise that you contact the Health Authority to discuss your risk factors as soon as you can. Please fill in our ");
 
-		//
 		n.appendChild(t);
 
 		m.append(n);
@@ -82,8 +95,12 @@ function init(){
 		//catch all error
 		var resultMessage = 'Error: Please retake the test again, error calculating your results.';
 	}
+}
 
-};
+/**
+*	Function will take the values of the user checked checkboxes and sum the result.
+*	@return the summed calculated result value as an integer type
+*/
 
 function generateTotals(){
 	var q_1_0 = parseInt(document.querySelector('input[name="radio_q0"]:checked').value);
@@ -98,9 +115,14 @@ function generateTotals(){
 	return q_1_0 + q_1_1 + q_1_2 + q_1_3;
 }
 
+/**
+*	Function takes care of the displaying of the results messages in the correct manner
+*	@param resultsMessage: The generated mark up message based off of the calculation of the summed value of the checkboxes
+*/
+
 function generateResults(resultMessage){
 	
-
+	//grab the results message if there's already one displayed on the page
 	var paras = document.getElementsByClassName('results');
 
 	//if there are old results on the page then remove them
