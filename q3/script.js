@@ -10,7 +10,9 @@
 function init(){
 	formValidate();
 }
-
+/**
+*	Runs the query validation across the form with an ID of 'validate'
+*/
 function formValidate(){
 	$("#validate").validate();
 }
